@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindMatch Registration</title>
+    <link rel="stylesheet" href="registration.css">
+</head>
+<body>
+    <header>
+        <h1>MindMatch</h1>
+        <p>Find the perfect workplace that aligns with your well-being</p>
+    </header>
+
+    <main class="registration-container">
+        <form id="registration-form">
+            <h2>Register to Get Started</h2>
+
+            <div class="form-group">
+                <input type="text" id="name" name="name" required>
+                <label for="name">Full Name</label>
+            </div>
+
+            <div class="form-group">
+                <input type="email" id="email" name="email" required>
+                <label for="email">Email</label>
+            </div>
+
+            <div class="form-group">
+                <input type="text" id="job-preferences" name="job-preferences">
+                <label for="job-preferences">Job Preferences</label>
+            </div>
+
+            <div class="form-group">
+                <select id="work-environment" name="work-environment">
+                    <option value="" disabled selected>Choose work environment</option>
+                    <option value="remote">Remote</option>
+                    <option value="in-office">In-office</option>
+                    <option value="hybrid">Hybrid</option>
+                </select>
+            </div>
+
+            <button type="submit" id="register-btn">Register</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 MindMatch - Supporting Healthier Workplaces</p>
+    </footer>
+
+    <!-- JavaScript to Handle Form Submission and Redirect to Main Page -->
+    <script>
+        document.getElementById("registration-form").addEventListener("submit", function(e) {
+            e.preventDefault(); // Prevent default form submission
+
+            // Redirect to the main page after "submission"
+            window.location.href = "Questionnaire.html";
+        });
+    </script>
+</body>
+</html>

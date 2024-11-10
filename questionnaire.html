@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Work Environment Questionnaire</title>
+    <link rel="stylesheet" href="questionnaire.css">
+</head>
+<body>
+    <header>
+        <h1>Find Your Ideal Work Environment</h1>
+        <p>Answer each question to help us understand your preferences.</p>
+    </header>
+
+    <main class="questionnaire-container">
+        <form id="questionnaire-form">
+            <!-- Card 1: Culture -->
+            <div class="card" id="card-1">
+                <h2>Culture</h2>
+                <div class="question">
+                    <label>1. How important is it for you that a company promotes open discussions about mental health?</label>
+                    <div class="options">
+                        <label><input type="radio" name="q1" value="25%" required> 25%</label>
+                        <label><input type="radio" name="q1" value="50%"> 50%</label>
+                        <label><input type="radio" name="q1" value="75%"> 75%</label>
+                        <label><input type="radio" name="q1" value="100%"> 100%</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <label>2. How much do you value a workplace where employees feel comfortable discussing mental health?</label>
+                    <div class="options">
+                        <label><input type="radio" name="q2" value="25%" required> 25%</label>
+                        <label><input type="radio" name="q2" value="50%"> 50%</label>
+                        <label><input type="radio" name="q2" value="75%"> 75%</label>
+                        <label><input type="radio" name="q2" value="100%"> 100%</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <label>3. How important is it for you that a company’s values or mission include mental health?</label>
+                    <div class="options">
+                        <label><input type="radio" name="q3" value="25%" required> 25%</label>
+                        <label><input type="radio" name="q3" value="50%"> 50%</label>
+                        <label><input type="radio" name="q3" value="75%"> 75%</label>
+                        <label><input type="radio" name="q3" value="100%"> 100%</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <label>4. Do you prefer a workplace that actively promotes a stigma-free environment around mental health?</label>
+                    <div class="options">
+                        <label><input type="radio" name="q4" value="25%" required> 25%</label>
+                        <label><input type="radio" name="q4" value="50%"> 50%</label>
+                        <label><input type="radio" name="q4" value="75%"> 75%</label>
+                        <label><input type="radio" name="q4" value="100%"> 100%</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <label>5. How much does it matter that leaders model positive mental health practices?</label>
+                    <div class="options">
+                        <label><input type="radio" name="q5" value="25%" required> 25%</label>
+                        <label><input type="radio" name="q5" value="50%"> 50%</label>
+                        <label><input type="radio" name="q5" value="75%"> 75%</label>
+                        <label><input type="radio" name="q5" value="100%"> 100%</label>
+                    </div>
+                </div>
+                <button type="button" onclick="showNextCard(1)">Next</button>
+            </div>
+
+            <!-- Card 2: Mental Health Benefits -->
+            <div class="card" id="card-2">
+                <h2>Mental Health Benefits</h2>
+                <div class="question">
+                    <label>6. How important is it for you that mental health coverage (e.g., therapy) is part of the healthcare benefits?</label>
+                    <div class="options">
+                        <label><input type="radio" name="q6" value="25%" required> 25%</label>
+                        <label><input type="radio" name="q6" value="50%"> 50%</label>
+                        <label><input type="radio" name="q6" value="75%"> 75%</label>
+                        <label><input type="radio" name="q6" value="100%"> 100%</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <label>7. Do you prefer a company that provides financial support or subsidies for mental health services?</label>
+                    <div class="options">
+                        <label><input type="radio" name="q7" value="25%" required> 25%</label>
+                        <label><input type="radio" name="q7" value="50%"> 50%</label>
+                        <label><input type="radio" name="q7" value="75%"> 75%</label>
+                        <label><input type="radio" name="q7" value="100%"> 100%</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <label>8. How important are preventive programs (e.g., mindfulness, stress management) to you?</label>
+                    <div class="options">
+                        <label><input type="radio" name="q8" value="25%" required> 25%</label>
+                        <label><input type="radio" name="q8" value="50%"> 50%</label>
+                        <label><input type="radio" name="q8" value="75%"> 75%</label>
+                        <label><input type="radio" name="q8" value="100%"> 100%</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <label>9. How valuable is it to you that mental health benefits are easily accessible?</label>
+                    <div class="options">
+                        <label><input type="radio" name="q9" value="25%" required> 25%</label>
+                        <label><input type="radio" name="q9" value="50%"> 50%</label>
+                        <label><input type="radio" name="q9" value="75%"> 75%</label>
+                        <label><input type="radio" name="q9" value="100%"> 100%</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <label>10. Would you prefer a company that offers mental health days or leave policies for well-being?</label>
+                    <div class="options">
+                        <label><input type="radio" name="q10" value="25%" required> 25%</label>
+                        <label><input type="radio" name="q10" value="50%"> 50%</label>
+                        <label><input type="radio" name="q10" value="75%"> 75%</label>
+                        <label><input type="radio" name="q10" value="100%"> 100%</label>
+                    </div>
+                </div>
+                <button type="button" onclick="showNextCard(2)">Next</button>
+            </div>
+
+            <!-- Card 3: Resources -->
+            <div class="card" id="card-3">
+                <h2>Resources</h2>
+                <!-- Questions 11 to 15 -->
+                <div class="question">
+                    <label>11. How important are mental health training and resources to you?</label>
+                    <div class="options">
+                        <label><input type="radio" name="q11" value="25%" required> 25%</label>
+                        <label><input type="radio" name="q11" value="50%"> 50%</label>
+                        <label><input type="radio" name="q11" value="75%"> 75%</label>
+                        <label><input type="radio" name="q11" value="100%"> 100%</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <label>12. Do you value having access to mental health professionals within the company?</label>
+                    <div class="options">
+                        <label><input type="radio" name="q12" value="25%" required> 25%</label>
+                        <label><input type="radio" name="q12" value="50%"> 50%</label>
+                        <label><input type="radio" name="q12" value="75%"> 75%</label>
+                        <label><input type="radio" name="q12" value="100%"> 100%</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <label>13. How much does it matter that mental health resources are tailored to different needs (e.g., remote, shift workers)?</label>
+                    <div class="options">
+                        <label><input type="radio" name="q13" value="25%" required> 25%</label>
+                        <label><input type="radio" name="q13" value="50%"> 50%</label>
+                        <label><input type="radio" name="q13" value="75%"> 75%</label>
+                        <label><input type="radio" name="q13" value="100%"> 100%</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <label>14. How important is it for you to have access to workshops or seminars focused on mental health?</label>
+                    <div class="options">
+                        <label><input type="radio" name="q14" value="25%" required> 25%</label>
+                        <label><input type="radio" name="q14" value="50%"> 50%</label>
+                        <label><input type="radio" name="q14" value="75%"> 75%</label>
+                        <label><input type="radio" name="q14" value="100%"> 100%</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <label>15. Do you want resources to be available virtually, especially if working remotely?</label>
+                    <div class="options">
+                        <label><input type="radio" name="q15" value="25%" required> 25%</label>
+                        <label><input type="radio" name="q15" value="50%"> 50%</label>
+                        <label><input type="radio" name="q15" value="75%"> 75%</label>
+                        <label><input type="radio" name="q15" value="100%"> 100%</label>
+                    </div>
+                </div>
+                <button type="button" onclick="showNextCard(3)">Next</button>
+            </div>
+
+            <!-- Card 4: Workplace Policies -->
+            <div class="card" id="card-4">
+                <h2>Workplace Policies</h2>
+                <!-- Questions 16 to 20 -->
+                <div class="question">
+                    <label>16. How important is it that a company has policies supporting mental health?</label>
+                    <div class="options">
+                        <label><input type="radio" name="q16" value="25%" required> 25%</label>
+                        <label><input type="radio" name="q16" value="50%"> 50%</label>
+                        <label><input type="radio" name="q16" value="75%"> 75%</label>
+                        <label><input type="radio" name="q16" value="100%"> 100%</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <label>17. Do you prefer a company with clear guidelines for mental health accommodations?</label>
+                    <div class="options">
+                        <label><input type="radio" name="q17" value="25%" required> 25%</label>
+                        <label><input type="radio" name="q17" value="50%"> 50%</label>
+                        <label><input type="radio" name="q17" value="75%"> 75%</label>
+                        <label><input type="radio" name="q17" value="100%"> 100%</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <label>18. How much does it matter that a company promotes work-life balance?</label>
+                    <div class="options">
+                        <label><input type="radio" name="q18" value="25%" required> 25%</label>
+                        <label><input type="radio" name="q18" value="50%"> 50%</label>
+                        <label><input type="radio" name="q18" value="75%"> 75%</label>
+                        <label><input type="radio" name="q18" value="100%"> 100%</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <label>19. How valuable is it to you that a company reviews and updates its mental health policies regularly?</label>
+                    <div class="options">
+                        <label><input type="radio" name="q19" value="25%" required> 25%</label>
+                        <label><input type="radio" name="q19" value="50%"> 50%</label>
+                        <label><input type="radio" name="q19" value="75%"> 75%</label>
+                        <label><input type="radio" name="q19" value="100%"> 100%</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <label>20. Do you prefer an organization that takes privacy seriously for mental health accommodations?</label>
+                    <div class="options">
+                        <label><input type="radio" name="q20" value="25%" required> 25%</label>
+                        <label><input type="radio" name="q20" value="50%"> 50%</label>
+                        <label><input type="radio" name="q20" value="75%"> 75%</label>
+                        <label><input type="radio" name="q20" value="100%"> 100%</label>
+                    </div>
+                </div>
+                <button type="button" onclick="showNextCard(4)">Next</button>
+            </div>
+
+            <!-- Card 5: Healthy Work Environment -->
+            <div class="card" id="card-5">
+                <h2>Healthy Work Environment</h2>
+                <!-- Questions 21 to 25 -->
+                <div class="question">
+                    <label>21. How important is it to you that a company maintains a safe and supportive physical environment?</label>
+                    <div class="options">
+                        <label><input type="radio" name="q21" value="25%" required> 25%</label>
+                        <label><input type="radio" name="q21" value="50%"> 50%</label>
+                        <label><input type="radio" name="q21" value="75%"> 75%</label>
+                        <label><input type="radio" name="q21" value="100%"> 100%</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <label>22. Would you value having quiet spaces or relaxation areas in the workplace?</label>
+                    <div class="options">
+                        <label><input type="radio" name="q22" value="25%" required> 25%</label>
+                        <label><input type="radio" name="q22" value="50%"> 50%</label>
+                        <label><input type="radio" name="q22" value="75%"> 75%</label>
+                        <label><input type="radio" name="q22" value="100%"> 100%</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <label>23. How important are regular social or team-building activities to you?</label>
+                    <div class="options">
+                        <label><input type="radio" name="q23" value="25%" required> 25%</label>
+                        <label><input type="radio" name="q23" value="50%"> 50%</label>
+                        <label><input type="radio" name="q23" value="75%"> 75%</label>
+                        <label><input type="radio" name="q23" value="100%"> 100%</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <label>24. Do you value a workplace that manages workloads to prevent burnout?</label>
+                    <div class="options">
+                        <label><input type="radio" name="q24" value="25%" required> 25%</label>
+                        <label><input type="radio" name="q24" value="50%"> 50%</label>
+                        <label><input type="radio" name="q24" value="75%"> 75%</label>
+                        <label><input type="radio" name="q24" value="100%"> 100%</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <label>25. How important is a workplace culture that prioritizes mental well-being?</label>
+                    <div class="options">
+                        <label><input type="radio" name="q25" value="25%" required> 25%</label>
+                        <label><input type="radio" name="q25" value="50%"> 50%</label>
+                        <label><input type="radio" name="q25" value="75%"> 75%</label>
+                        <label><input type="radio" name="q25" value="100%"> 100%</label>
+                    </div>
+                </div>
+                <button type="button" onclick="showNextCard(5)">Next</button>
+            </div>
+
+            <!-- Card 6: Leadership Support -->
+            <div class="card" id="card-6">
+                <h2>Leadership Support</h2>
+                <!-- Questions 26 to 30 -->
+                <div class="question">
+                    <label>26. How much do you value leadership that actively promotes mental health?</label>
+                    <div class="options">
+                        <label><input type="radio" name="q26" value="25%" required> 25%</label>
+                        <label><input type="radio" name="q26" value="50%"> 50%</label>
+                        <label><input type="radio" name="q26" value="75%"> 75%</label>
+                        <label><input type="radio" name="q26" value="100%"> 100%</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <label>27. Do you prefer leaders who are approachable regarding mental health issues?</label>
+                    <div class="options">
+                        <label><input type="radio" name="q27" value="25%" required> 25%</label>
+                        <label><input type="radio" name="q27" value="50%"> 50%</label>
+                        <label><input type="radio" name="q27" value="75%"> 75%</label>
+                        <label><input type="radio" name="q27" value="100%"> 100%</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <label>28. How important is it that leaders are trained to recognize mental health issues?</label>
+                    <div class="options">
+                        <label><input type="radio" name="q28" value="25%" required> 25%</label>
+                        <label><input type="radio" name="q28" value="50%"> 50%</label>
+                        <label><input type="radio" name="q28" value="75%"> 75%</label>
+                        <label><input type="radio" name="q28" value="100%"> 100%</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <label>29. Do you value open communication from leaders about mental health initiatives?</label>
+                    <div class="options">
+                        <label><input type="radio" name="q29" value="25%" required> 25%</label>
+                        <label><input type="radio" name="q29" value="50%"> 50%</label>
+                        <label><input type="radio" name="q29" value="75%"> 75%</label>
+                        <label><input type="radio" name="q29" value="100%"> 100%</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <label>30. How much does it matter to you that leaders are visible in supporting mental health initiatives?</label>
+                    <div class="options">
+                        <label><input type="radio" name="q30" value="25%" required> 25%</label>
+                        <label><input type="radio" name="q30" value="50%"> 50%</label>
+                        <label><input type="radio" name="q30" value="75%"> 75%</label>
+                        <label><input type="radio" name="q30" value="100%"> 100%</label>
+                    </div>
+                </div>
+                <button type="button" onclick="showNextCard(6)">Next</button>
+            </div>
+
+            <!-- Card 7: Outcomes Measurement -->
+            <div class="card" id="card-7">
+                <h2>Outcomes Measurement</h2>
+                <!-- Questions 31 to 35 -->
+                <div class="question">
+                    <label>31. How much do you value that a company assesses its mental health programs’ effectiveness?</label>
+                    <div class="options">
+                        <label><input type="radio" name="q31" value="25%" required> 25%</label>
+                        <label><input type="radio" name="q31" value="50%"> 50%</label>
+                        <label><input type="radio" name="q31" value="75%"> 75%</label>
+                        <label><input type="radio" name="q31" value="100%"> 100%</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <label>32. Do you prefer companies that seek employee feedback on mental health initiatives?</label>
+                    <div class="options">
+                        <label><input type="radio" name="q32" value="25%" required> 25%</label>
+                        <label><input type="radio" name="q32" value="50%"> 50%</label>
+                        <label><input type="radio" name="q32" value="75%"> 75%</label>
+                        <label><input type="radio" name="q32" value="100%"> 100%</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <label>33. How important is it for you that a company tracks mental health outcomes (e.g., absenteeism)?</label>
+                    <div class="options">
+                        <label><input type="radio" name="q33" value="25%" required> 25%</label>
+                        <label><input type="radio" name="q33" value="50%"> 50%</label>
+                        <label><input type="radio" name="q33" value="75%"> 75%</label>
+                        <label><input type="radio" name="q33" value="100%"> 100%</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <label>34. Do you value transparency about mental health program results?</label>
+                    <div class="options">
+                        <label><input type="radio" name="q34" value="25%" required> 25%</label>
+                        <label><input type="radio" name="q34" value="50%"> 50%</label>
+                        <label><input type="radio" name="q34" value="75%"> 75%</label>
+                        <label><input type="radio" name="q34" value="100%"> 100%</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <label>35. How likely are you to prefer a company that adjusts mental health programs based on employee feedback?</label>
+                    <div class="options">
+                        <label><input type="radio" name="q35" value="25%" required> 25%</label>
+                        <label><input type="radio" name="q35" value="50%"> 50%</label>
+                        <label><input type="radio" name="q35" value="75%"> 75%</label>
+                        <label><input type="radio" name="q35" value="100%"> 100%</label>
+                    </div>
+                </div>
+                <button type="button" onclick="showNextCard(7)">Next</button>
+            </div>
+
+            <!-- Card 8: Innovation -->
+            <div class="card" id="card-8">
+                <h2>Innovation</h2>
+                <!-- Questions 36 to 40 -->
+                <div class="question">
+                    <label>36. How important is it to you that a company regularly introduces new mental health programs?</label>
+                    <div class="options">
+                        <label><input type="radio" name="q36" value="25%" required> 25%</label>
+                        <label><input type="radio" name="q36" value="50%"> 50%</label>
+                        <label><input type="radio" name="q36" value="75%"> 75%</label>
+                        <label><input type="radio" name="q36" value="100%"> 100%</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <label>37. Do you prefer companies that use digital tools (e.g., virtual counseling) to support mental health?</label>
+                    <div class="options">
+                        <label><input type="radio" name="q37" value="25%" required> 25%</label>
+                        <label><input type="radio" name="q37" value="50%"> 50%</label>
+                        <label><input type="radio" name="q37" value="75%"> 75%</label>
+                        <label><input type="radio" name="q37" value="100%"> 100%</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <label>38. How important is it for you that a company tries new approaches for mental health support?</label>
+                    <div class="options">
+                        <label><input type="radio" name="q38" value="25%" required> 25%</label>
+                        <label><input type="radio" name="q38" value="50%"> 50%</label>
+                        <label><input type="radio" name="q38" value="75%"> 75%</label>
+                        <label><input type="radio" name="q38" value="100%"> 100%</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <label>39. Do you value a company that collaborates with experts or consultants for mental health?</label>
+                    <div class="options">
+                        <label><input type="radio" name="q39" value="25%" required> 25%</label>
+                        <label><input type="radio" name="q39" value="50%"> 50%</label>
+                        <label><input type="radio" name="q39" value="75%"> 75%</label>
+                        <label><input type="radio" name="q39" value="100%"> 100%</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <label>40. How much do you value a proactive approach in addressing new mental health challenges?</label>
+                    <div class="options">
+                        <label><input type="radio" name="q40" value="25%" required> 25%</label>
+                        <label><input type="radio" name="q40" value="50%"> 50%</label>
+                        <label><input type="radio" name="q40" value="75%"> 75%</label>
+                        <label><input type="radio" name="q40" value="100%"> 100%</label>
+                    </div>
+                </div>
+                <button type="submit" id="submit-btn">Submit</button>
+            </div>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 MindMatch - Helping You Find Your Perfect Workplace</p>
+    </footer>
+
+<!--    &lt;!&ndash; Inline JavaScript for card navigation and redirection &ndash;&gt;-->
+    <script>
+        function showNextCard(currentCard) {
+            document.getElementById("card-" + currentCard).style.display = "none";
+            document.getElementById("card-" + (currentCard + 1)).style.display = "block";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // Initialize the cards
+            document.getElementById("card-1").style.display = "block";
+            for (let i = 2; i <= 8; i++) {
+                document.getElementById("card-" + i).style.display = "none";
+            }
+
+            // Attach the event listener to the form after DOM is loaded
+            document.getElementById("questionnaire-form").addEventListener("submit", function(e) {
+                e.preventDefault(); // Prevent the default form submission
+
+                // Confirm redirection
+                alert("Redirecting to registration page...");
+
+                // Redirect to the registration page
+                window.location.href = "registration.html"; // Update this path to your desired URL
+            });
+        });
+    </script>
+<script>
+    // Wait for the DOM to load
+document.addEventListener("DOMContentLoaded", function() {
+    // Attach an event listener to the form submission
+    document.getElementById("questionnaire-form").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent the form from submitting the traditional way
+ const keyMapping = {
+            q1: "Culture", q2: "Culture", q3: "Culture", q4: "Culture", q5: "Culture",
+            q6: "Mental Health Benefits", q7: "Mental Health Benefits", q8: "Mental Health Benefits", q9: "Mental Health Benefits", q10: "Mental Health Benefits",
+            q11: "Resources", q12: "Resources", q13: "Resources", q14: "Resources", q15: "Resources",
+            q16: "Workplace Policies", q17: "Workplace Policies", q18: "Workplace Policies", q19: "Workplace Policies", q20: "Workplace Policies",
+            q21: "Healthy Work Environment", q22: "Healthy Work Environment", q23: "Healthy Work Environment", q24: "Healthy Work Environment", q25: "Healthy Work Environment",
+            q26: "Leadership Support", q27: "Leadership Support", q28: "Leadership Support", q29: "Leadership Support", q30: "Mental Health Benefits",
+            q31: "Outcomes Measurement", q32: "Outcomes Measurement", q33: "Outcomes Measurement", q34: "Outcomes Measurement", q35: "Outcomes Measurement",
+            q36: "Innovation", q37: "Innovation", q38: "Innovation", q39: "Innovation", q40: "Innovation"
+        };
+
+        // Initialize the answers object with arrays for each category
+        const answers = {
+            "Culture": [],
+            "Mental Health Benefits": [],
+            "Resources": [],
+            "Workplace Policies": [],
+            "Leadership Support": [],
+            "Healthy Work Environment":[],
+            "Outcomes Measurement": [],
+            "Innovation": []
+        };
+
+        // Collect the answers and categorize them
+        const formData = new FormData(this);
+        formData.forEach(function(value, key) {
+            const category = keyMapping[key];
+            if (category) {
+                answers[category].push(value); // Append value to the relevant category array
+            }
+        });
+
+        function calculateMeanPercentages(data) {
+            const means = {};
+
+              // Iterate through each category in the data
+              for (const category in data) {
+                const values = data[category];
+
+                // Convert each percentage string to a number and calculate the sum
+                const total = values.reduce((sum, value) => sum + parseInt(value, 10), 0);
+
+                // Calculate the mean by dividing the sum by the number of items
+                const mean = total / values.length;
+
+                // Store the mean in the results object
+                means[category] = mean;
+              }
+
+              return means;
+            }
+
+        const meanPercentages = calculateMeanPercentages(answers);
+        sessionStorage.setItem("meanPercentages", JSON.stringify(meanPercentages));
+
+        // Redirect to result.html to display results
+        window.location.href = "result.html";
+
+        // Convert answers to JSON and create a download link
+        // const dataStr = JSON.stringify(meanPercentages, null, 2);
+
+        // const blob = new Blob([dataStr], { type: "application/json" });
+        // const link = document.createElement("a");
+        // link.href = URL.createObjectURL(blob);
+        // link.download = "surveyAnswers.json"; // Name of the downloaded file
+        // link.click();
+    });
+});
+
+    </script>
+</body>
+</html>

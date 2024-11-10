@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Survey Results</title>
+    <style>
+
+        /* Reset default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            background-color: #ffffff;
+            color: black;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Header styling with animation */
+        header {
+            background-color: #4fb8a3;
+            color: #fff;
+            text-align: center;
+            padding: 2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            animation: fadeInDown 1.5s ease-in-out;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        /* Footer styling with animation */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            animation: fadeInUp 1.5s ease-in-out;
+            margin-top: auto;
+        }
+
+        /* Main content area */
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeIn 2s ease-in-out forwards;
+            animation-delay: 1s;
+        }
+
+        /* Results container for progress circles */
+        #results-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            max-width: 800px;
+            opacity: 0;
+            animation: fadeIn 2s ease-in-out forwards;
+            animation-delay: 1s;
+        }
+
+        /* Circle container styling */
+        .progress-container {
+            text-align: center;
+            flex: 1 1 30%;
+            max-width: 150px;
+            transform: scale(0.8);
+            animation: zoomIn 1.5s ease-in-out forwards;
+        }
+
+        /* Circle animation styling */
+        .progress-circle {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            background: conic-gradient(#4fb8a3 var(--percentage), #ddd 0%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            color: #333;
+            transform: rotate(-90deg); /* Start from the top */
+        }
+
+        .progress-circle span {
+            position: absolute;
+            font-weight: bold;
+            transform: rotate(90deg); /* Counter-rotate the text */
+        }
+
+        /* Category label styling */
+        .progress-container p {
+            margin-top: 10px;
+            font-weight: bold;
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards;
+            animation-delay: 1.5s;
+        }
+
+        /* Button styling */
+        .chat-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #4fb8a3;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            opacity: 0; /* Initially hidden */
+            animation: fadeIn 1.5s ease-in-out forwards;
+            animation-delay: 3.5s; /* Delay for visualization completion */
+        }
+
+        .chat-button:hover {
+            background-color: #3a927d;
+        }
+
+        /* Fade-in animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Zoom-in animation for circles */
+        @keyframes zoomIn {
+            from { transform: scale(0.5); }
+            to { transform: scale(1); }
+        }
+
+        /* Circle fill animation */
+        .progress-circle {
+            --percentage: 0%; /* Start with 0% fill */
+            animation: fillProgress 2s ease-out forwards;
+        }
+
+        /* Fill animation for the circular progress */
+        @keyframes fillProgress {
+            from { --percentage: 0%; }
+            to { /* Will be dynamically set in JS */ }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>MindMatch</h1>
+        <p>Find the perfect workplace that aligns with your well-being</p>
+    </header>
+
+    <main>
+        <h1>Questionnaire Results</h1>
+        <div id="results-container"></div>
+
+        <!-- Chat button -->
+        <button class="chat-button" onclick="location.href='chat.html'">Chat with Me</button>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 MindMatch - Supporting Healthier Workplaces</p>
+    </footer>
+
+    <script>
+        // Retrieve mean percentages from sessionStorage
+        const meanPercentages = JSON.parse(sessionStorage.getItem("meanPercentages"));
+
+        if (meanPercentages) {
+            const resultsContainer = document.getElementById("results-container");
+
+            // Create a circular progress bar for each category
+            for (const [category, value] of Object.entries(meanPercentages)) {
+                const progressContainer = document.createElement("div");
+                progressContainer.className = "progress-container";
+
+                const progressCircle = document.createElement("div");
+                progressCircle.className = "progress-circle";
+                progressCircle.style.setProperty("--percentage", `${value}%`);
+
+                const label = document.createElement("span");
+                label.textContent = `${value.toFixed(1)}%`;
+
+                const categoryLabel = document.createElement("p");
+                categoryLabel.textContent = category;
+
+                progressCircle.appendChild(label);
+                progressContainer.appendChild(progressCircle);
+                progressContainer.appendChild(categoryLabel);
+                resultsContainer.appendChild(progressContainer);
+            }
+        } else {
+            document.getElementById("results-container").textContent = "No results available.";
+        }
+    </script>
+</body>
+</html>

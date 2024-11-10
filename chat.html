@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat with MindMatch</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <style>
+        /* Reset default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            background-color: #ffffff;
+            color: black;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Header styling */
+        header {
+            background-color: #4fb8a3;
+            color: #fff;
+            text-align: center;
+            padding: 2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            animation: fadeInDown 1.5s ease-in-out;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            margin-top: auto;
+            animation: fadeInUp 1.5s ease-in-out;
+        }
+
+        /* Main chat container */
+        .chat-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Chat messages area */
+        .chat-messages {
+            flex: 1;
+            width: 100%;
+            max-height: 500px;
+            overflow-y: auto;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 2s ease-in-out forwards;
+        }
+
+        /* Message styling */
+        .message {
+            padding: 0.8rem;
+            border-radius: 10px;
+            max-width: 80%;
+            margin: 0.5rem 0;
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+
+        .message.user {
+            align-self: flex-end;
+            background-color: #4fb8a3;
+            color: white;
+        }
+
+        .message.bot {
+            align-self: flex-start;
+            background-color: #ddd;
+            color: black;
+        }
+
+        /* Chat input area */
+        .chat-input {
+            display: flex;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .chat-input button {
+            margin-left: 10px;
+            padding: 0.8rem 1.2rem;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #4fb8a3;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .chat-input button:hover {
+            background-color: #3a927d;
+        }
+
+        /* Fade-in animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>MindMatch Chat</h1>
+    <p>Chat with MindMatch to find your perfect workplace</p>
+</header>
+
+<div class="chat-container">
+    <div class="chat-messages" id="chat-messages">
+        <!-- Messages will appear here -->
+    </div>
+
+    <div class="chat-input">
+        <input type="text" id="user-input" placeholder="Type a message..." />
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 MindMatch - Supporting Healthier Workplaces</p>
+</footer>
+
+<script>
+    const chatMessages = document.getElementById("chat-messages");
+    let companiesData = [];
+    let reviewsData = [];
+
+    // Load CSV files
+    Papa.parse("path/to/companies.csv", {
+        download: true,
+        header: true,
+        complete: function(results) {
+            companiesData = results.data;
+        }
+    });
+
+    Papa.parse("path/to/reviews.csv", {
+        download: true,
+        header: true,
+        complete: function(results) {
+            reviewsData = results.data;
+        }
+    });
+
+    // Define keywords for each recommendation category
+    const categoryKeywords = {
+        "Culture": ["culture", "team", "values"],
+        "Mental Health Benefits": ["mental health", "therapy", "well-being", "support"],
+        "Resources": ["resources", "training", "support", "tools"],
+        "Workplace Policies": ["policy", "flexible", "vacation", "remote"],
+        "Leadership Support": ["leadership", "management", "support"],
+        "Healthy Work Environment": ["environment", "work-life balance", "safe"],
+        "Outcomes Measurement": ["metrics", "performance", "results"],
+        "Innovation": ["innovation", "research", "development", "technology"]
+    };
+
+    function displayMessage(content, type) {
+        const messageElement = document.createElement("div");
+        messageElement.classList.add("message", type);
+        messageElement.textContent = content;
+        chatMessages.appendChild(messageElement);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function sendMessage() {
+        const userInput = document.getElementById("user-input");
+        const message = userInput.value.trim();
+
+        if (message) {
+            displayMessage(message, "user");
+            userInput.value = "";
+
+            setTimeout(() => {
+                displayMessage(generateBotResponse(message), "bot");
+            }, 1000);
+        }
+    }
+
+    function generateBotResponse(message) {
+        if (message.toLowerCase().includes("recommend")) {
+            const suggestions = getCompanyRecommendations();
+            return suggestions.length
+                ? `Here are some companies you may be interested in:\n${suggestions.join("\n")}`
+                : "I couldn't find any companies matching your preferences.";
+        } else {
+            return "I'm here to support you. Please feel free to ask anything!";
+        }
+    }
+
+    function getCompanyRecommendations() {
+        const scoredCompanies = companiesData.map(company => {
+            const reviews = reviewsData.filter(review => review.Company === company.Company);
+            let scores = {};
+
+            Object.keys(categoryKeywords).forEach(category => scores[category] = 0);
+
+            const description = company.Description.toLowerCase();
+            Object.keys(categoryKeywords).forEach(category => {
+                categoryKeywords[category].forEach(keyword => {
+                    if (description.includes(keyword)) scores[category]++;
+                });
+            });
+
+            reviews.forEach(review => {
+                const reviewText = review.Review.toLowerCase();
+                Object.keys(categoryKeywords).forEach(category => {
+                    categoryKeywords[category].forEach(keyword => {
+                        if (reviewText.includes(keyword)) scores[category]++;
+                    });
+                });
+            });
+
+            company.scores = scores;
+            return company;
+        });
+
+        const recommendations = scoredCompanies
+            .sort((a, b) => {
+                const aScore = Object.values(a.scores).reduce((sum, score) => sum + score, 0);
+                const bScore = Object.values(b.scores).reduce((sum, score) => sum + score, 0);
+                return bScore - aScore;
+            })
+            .slice(0, 3);
+
+        return recommendations.map(company =>
+            `- ${company.Company}: ${company.Description} (Top categories: ${Object.keys(company.scores).filter(category => company.scores[category] > 0).join(", ")})`
+        );
+    }
+</script>
+
+</body>
+</html>

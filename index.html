@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindMatch - Discover Your Ideal Workplace</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>MindMatch</h1>
+        <p>Your Journey to a Healthier Work Environment Begins Here</p>
+    </header>
+
+    <main>
+        <!-- Dashboard Section with Icons and Animation -->
+        <section id="dashboard">
+            <h2>Your Wellness Dashboard</h2>
+            <div class="stats">
+                <div class="stat-box">
+                    <img src="https://img.icons8.com/color/48/user-group-man-man.png" alt="Users Icon">
+                    <h3>Total Users</h3>
+                    <p>100</p>
+                </div>
+                <div class="stat-box">
+                    <img src="https://img.icons8.com/color/48/company.png" alt="Companies Icon">
+                    <h3>Companies Listed</h3>
+                    <p>50</p>
+                </div>
+                <div class="stat-box">
+                    <img src="https://img.icons8.com/color/48/connection.png" alt="Matches Icon">
+                    <h3>Matches Made</h3>
+                    <p>120</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chatbot Section with Animated Input -->
+        <section id="chatbot">
+            <h2>MindMatch Chatbot</h2>
+            <div id="chat-window">
+                <div class="message bot">Hi there! Let’s find a workplace that aligns with your wellness needs. What are you looking for?</div>
+            </div>
+            <div class="chat-input-container">
+                <input type="text" id="chat-input" placeholder="Type your message here...">
+                <button id="send-btn">Send</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 MindMatch - Supporting Healthier Workplaces</p>
+    </footer>
+
+    <div id="answers-container">
+        <!-- Answers will be displayed here -->
+    </div>
+
+    <!-- JavaScript for basic chatbot response -->
+    <script>
+        const sendBtn = document.getElementById('send-btn');
+        const chatWindow = document.getElementById('chat-window');
+        const chatInput = document.getElementById('chat-input');
+
+        sendBtn.addEventListener('click', () => {
+            const userMessage = chatInput.value;
+            if (userMessage.trim() !== "") {
+                const userMsgDiv = document.createElement('div');
+                userMsgDiv.classList.add('message', 'user');
+                userMsgDiv.textContent = userMessage;
+                chatWindow.appendChild(userMsgDiv);
+
+                const botMsgDiv = document.createElement('div');
+                botMsgDiv.classList.add('message', 'bot');
+                botMsgDiv.textContent = "Thanks for sharing! I’m gathering some options for you.";
+                chatWindow.appendChild(botMsgDiv);
+
+                chatInput.value = "";
+                chatWindow.scrollTop = chatWindow.scrollHeight;
+            }
+        });
+    </script>
+    <script>
+        // Wait for the DOM to load
+        document.addEventListener("DOMContentLoaded", function() {
+            // Retrieve the answers from localStorage
+            const answers = JSON.parse(localStorage.getItem('surveyAnswers'));
+
+// /<!--           // Check if there are answers to display-->
+<!--            if (answers) {-->
+                const container = document.getElementById('answers-container');
+
+                // Create a list to display the answers
+                const list = document.createElement('ul');
+
+                // Loop through the answers and add them to the list
+                for (const [question, answer] of Object.entries(answers)) {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `${question}: ${answer}`;
+                    list.appendChild(listItem);
+                }
+
+                // Add the list to the container
+                container.appendChild(list);
+<!--            } else {-->
+//<!--              // If no answers found, display a message-->
+<!--                document.getElementById('answers-container').textContent = 'No answers found.';-->
+<!--            }-->
+        });
+    </script>
+</body>
+</html>
